@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gsdemo
+spec:
+  selector:
+    matchLabels:
+      app: gsdemo
+  template:
+    metadata:
+      labels:
+        app: gsdemo
+    spec:
+      containers:
+      - name: gsdemocont
+        image: contreggs.azurecr.io/demo:latest
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gsdemoserv
+spec:
+  selector:
+    app: gsdemo
+  type: LoadBalancer
+  ports:
+  - port: 5000
+    targetPort: 5000
+
