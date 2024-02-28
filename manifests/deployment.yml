@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: girijasugumardevopspipeline 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: girijasugumardevopspipeline
+  template:
+    metadata:
+      labels:
+        app: girijasugumardevopspipeline 
+    spec:
+      containers:
+        - name: girijasugumardevopspipeline 
+          image: contreggs.azurecr.io/girijasugumardevopspipeline
+          ports:
+          - containerPort: 5000
