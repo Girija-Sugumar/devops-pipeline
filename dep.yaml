@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: gsdemocont
-        image: contreggs.azurecr.io/demo:latest
+        image: contres.azurecr.io/newbuild
         imagePullPolicy: Always
         resources:
           limits:

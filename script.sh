@@ -1,17 +1,17 @@
 # Build the Docker image
-docker build -t contreggs.azurecr.io/demo:latest .
+docker build -t contres.azurecr.io/newbuild .
 
 # Log in to Azure CLI
 az login
 
 # Log in to ACR
-az acr login --name contreggs
+az acr login --name contres
 
 # Tag the Docker image
-docker tag contreggs.azurecr.io/demo:latest contreggs.azurecr.io/demo:latest
+docker tag contres.azurecr.io/newbuild contres.azurecr.io/newbuild
 
 # Push the Docker image to ACR
-docker push contreggs.azurecr.io/demo:latest
+docker push contres.azurecr.io/newbuild
 
 kubectl rollout restart deploy gsdemo -n default
 
