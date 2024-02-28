@@ -19,7 +19,7 @@ variables:
   imagePullSecret: 'contres5e97-auth'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  pool: 'pipelinepooleg'
 
 
 stages:
@@ -28,8 +28,7 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool:
-      vmImage: $(vmImageName)
+    pool: 'pipelinepooleg'
     steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
@@ -51,8 +50,7 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: Deploy
-    pool:
-      vmImage: $(vmImageName)
+    pool: 'pipelinepooleg'
     environment: 'GirijaSugumardevopspipeline-1604.default'
     strategy:
       runOnce:
